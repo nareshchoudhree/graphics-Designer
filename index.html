@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Naresh Choudhary | Graphic Designer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        :root {
+            --primary: #6c5ce7;
+            --secondary: #a29bfe;
+            --dark: #2d3436;
+            --light: #f5f6fa;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--light);
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            min-height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            top: -100px;
+            left: -100px;
+        }
+        
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            bottom: -50px;
+            right: -50px;
+        }
+        
+        .shape {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            border-radius: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            transform: rotate(45deg);
+        }
+        
+        .shape-1 {
+            top: 20%;
+            right: 10%;
+        }
+        
+        .shape-2 {
+            bottom: 30%;
+            left: 15%;
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: white;
+            bottom: 0;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .btn-primary {
+            background: white;
+            color: var(--primary);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-outline {
+            border: 2px solid white;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-outline:hover {
+            background: white;
+            color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .work-card {
+            transition: all 0.3s ease;
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .work-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .work-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(108, 92, 231, 0.9);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .work-card:hover .work-overlay {
+            opacity: 1;
+        }
+        
+        .skill-bar {
+            height: 8px;
+            background: #e0e0e0;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 4px;
+            transition: width 1.5s ease;
+        }
+        
+        .testimonial-card {
+            transition: all 0.3s ease;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .contact-input {
+            border: 2px solid #e0e0e0;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(108, 92, 231, 0.2);
+        }
+        
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .cursor {
+            position: fixed;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: rgba(108, 92, 231, 0.5);
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            mix-blend-mode: multiply;
+            z-index: 9999;
+            transition: transform 0.2s ease;
+        }
+        
+        .cursor-follower {
+            position: fixed;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: rgba(108, 92, 231, 0.3);
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            z-index: 9998;
+            transition: transform 0.4s ease;
+        }
+        
+        .scroll-down {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateX(-50%); }
+            40% { transform: translateY(-20px) translateX(-50%); }
+            60% { transform: translateY(-10px) translateX(-50%); }
+        }
+        
+        .counter {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .counter-text {
+            font-size: 1rem;
+            color: var(--dark);
+        }
+        
+        .parallax {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        
+        .tilt {
+            transition: transform 0.3s ease;
+        }
+        
+        .tilt:hover {
+            transform: perspective(1000px) rotateX(5deg) rotateY(5deg) scale(1.03);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+    </style>
+</head>
+<body>
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+    
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 transition-all duration-300" id="navbar">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <a href="#" class="text-2xl font-bold text-white">Naresh<span class="gradient-text-white"> Choudhary</span></a>
+                
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="nav-link text-white">Home</a>
+                    <a href="#about" class="nav-link text-white">About</a>
+                    <a href="#services" class="nav-link text-white">Services</a>
+                    <a href="#portfolio" class="nav-link text-white">Portfolio</a>
+                    <a href="#testimonials" class="nav-link text-white">Testimonials</a>
+                    <a href="#contact" class="nav-link text-white">Contact</a>
+                </div>
+                
+                <button class="md:hidden text-white focus:outline-none" id="menu-btn">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div class="md:hidden hidden bg-white rounded-lg mt-4 py-2 px-4" id="mobile-menu">
+                <a href="#home" class="block py-2 text-gray-800 hover:text-purple-600">Home</a>
+                <a href="#about" class="block py-2 text-gray-800 hover:text-purple-600">About</a>
+                <a href="#services" class="block py-2 text-gray-800 hover:text-purple-600">Services</a>
+                <a href="#portfolio" class="block py-2 text-gray-800 hover:text-purple-600">Portfolio</a>
+                <a href="#testimonials" class="block py-2 text-gray-800 hover:text-purple-600">Testimonials</a>
+                <a href="#contact" class="block py-2 text-gray-800 hover:text-purple-600">Contact</a>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section class="hero flex items-center justify-center relative" id="home">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        
+        <div class="container mx-auto px-6 z-10">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <h1 class="text-4xl md:text-6xl font-bold text-white mb-4">Hi, I'm <br><span class="gradient-text-white">Naresh Choudhary</span></h1>
+                    <h2 class="text-2xl md:text-3xl font-semibold text-yellow-200 mb-6">Graphic Designer & Art Director</h2>
+                    <p class="text-white mb-8 text-lg opacity-90">I create stunning visual experiences that tell your brand's story and captivate your audience.</p>
+                    <div class="flex space-x-4">
+                        <a href="#portfolio" class="btn-primary px-6 py-3 rounded-full font-semibold">View Work</a>
+                        <a href="#contact" class="btn-outline px-6 py-3 rounded-full font-semibold">Hire Me</a>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2 flex justify-center">
+                    <img src="https://lh3.googleusercontent.com/a-/ALV-UjVWwBFOqmRhP3IeWbDxRIyBTVEAtI1aijDHxGFRV9FBhDlMK6SS=s265-w265-h265" 
+                         alt="Naresh Choudhary" 
+                         class="rounded-full w-64 h-64 md:w-80 md:h-80 object-cover border-4 border-white shadow-xl floating tilt">
+                </div>
+            </div>
+        </div>
+        
+        <div class="scroll-down">
+            <i class="fas fa-chevron-down text-2xl animate-bounce"></i>
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <section class="py-20 bg-white" id="about">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">About <span class="gradient-text">Me</span></h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-purple-500 to-indigo-500 mx-auto"></div>
+            </div>
+            
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/3 mb-10 md:mb-0 flex justify-center">
+                    <img src="https://lh3.googleusercontent.com/a-/ALV-UjVWwBFOqmRhP3IeWbDxRIyBTVEAtI1aijDHxGFRV9FBhDlMK6SS=s265-w265-h265" 
+                         alt="Elena Creative" 
+                         class="rounded-lg w-full max-w-md shadow-xl tilt">
+                </div>
+                
+                <div class="md:w-2/3 md:pl-12">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Creative Graphic Designer with 4+ Years of Experience</h3>
+                    <p class="text-gray-600 mb-6">I'm a passionate graphic designer specializing in branding, print design, and digital media. With a keen eye for detail and a love for innovative design solutions, I help businesses stand out in competitive markets.</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                        <div class="flex items-start">
+                            <div class="bg-purple-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-palette text-purple-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800 mb-1">UI/UX Design</h4>
+                                <p class="text-gray-600">Creating intuitive and beautiful user interfaces.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-purple-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-bullhorn text-purple-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800 mb-1">Brand Identity</h4>
+                                <p class="text-gray-600">Developing strong and memorable brand identities.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-purple-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-mobile-alt text-purple-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800 mb-1">Mobile Design</h4>
+                                <p class="text-gray-600">Designing for mobile-first experiences.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-purple-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-print text-purple-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800 mb-1">Print Design</h4>
+                                <p class="text-gray-600">Crafting stunning print materials.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="my resume .pdf" class="btn-primary px-6 py-3 rounded-full font-semibold inline-flex items-center">
+                        Download CV <i class="fas fa-download ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Skills Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">My <span class="gradient-text">Skills</span></h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-purple-500 to-indigo-500 mx-auto"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div>
+                    <div class="mb-8">
+                        <div class="flex justify-between mb-2">
+                            <span class="font-semibold text-gray-700">Adobe Photoshop</span>
+                            <span class="font-semibold text-gray-700">60%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 60%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-8">
+                        <div class="flex justify-between mb-2">
+                            <span class="font-semibold text-gray-700">Adobe Illustrator</span>
+                            <span class="font-semibold text-gray-700">50%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 50%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-8">
+                        <div class="flex justify-between mb-2">
+                            <span class="font-semibold text-gray-700">Adobe InDesign</span>
+                            <span class="font-semibold text-gray-700">75%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 75%"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="mb-8">
+                        <div class="flex justify-between mb-2">
+                            <span class="font-semibold text-gray-700">PixelLab</span>
+                            <span class="font-semibold text-gray-700">90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-8">
+                        <div class="flex justify-between mb-2">
+                            <span class="font-semibold text-gray-700">PicsArt</span>
+                            <span class="font-semibold text-gray-700">95%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 95%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-8">
+                        <div class="flex justify-between mb-2">
+                            <span class="font-semibold text-gray-700">Blender</span>
+                            <span class="font-semibold text-gray-700">75%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 75%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Services Section -->
+    <section class="py-20 bg-white" id="services">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">My <span class="gradient-text">Services</span></h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-purple-500 to-indigo-500 mx-auto"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 tilt">
+                    <div class="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mb-6 mx-auto">
+                        <i class="fas fa-paint-brush text-purple-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-center text-gray-800 mb-3">Brand Identity</h3>
+                    <p class="text-gray-600 text-center mb-4">Crafting unique visual identities that reflect your brand's personality and values.</p>
+                    <ul class="text-gray-600 space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-purple-500 mr-2"></i> Logo Design
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-purple-500 mr-2"></i> Brand Guidelines
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-purple-500 mr-2"></i> Business Cards
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 tilt">
+                    <div class="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mb-6 mx-auto">
+                        <i class="fas fa-laptop-code text-purple-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-center text-gray-800 mb-3">UI/UX Design</h3>
+                    <p class="text-gray-600 text-center mb-4">Designing intuitive and beautiful digital experiences that users love.</p>
+                    <ul class="text-gray-600 space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-purple-500 mr-2"></i> Website Design
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-purple-500 mr-2"></i> Mobile App Design
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-purple-500 mr-2"></i> Poster Designing
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 tilt">
+                    <div class="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mb-6 mx-auto">
+                        <i class="fas fa-print text-purple-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-center text-gray-800 mb-3">Print Design</h3>
+                    <p class="text-gray-600 text-center mb-4">Creating stunning print materials that make a lasting impression.</p>
+                    <ul class="text-gray-600 space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-purple-500 mr-2"></i> Brochures
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-purple-500 mr-2"></i> Posters
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-purple-500 mr-2"></i> Banners
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Stats Section -->
+    <section class="py-20 bg-gradient-to-r from-purple-500 to-indigo-600 text-white">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div class="p-4">
+                    <div class="counter text-4xl md:text-5xl font-bold mb-2 text-yellow-300" data-target="120">0</div>
+                    <div class="text-xl">Projects Completed</div>
+                </div>
+                
+                <div class="p-4">
+                    <div class="counter text-4xl md:text-5xl font-bold mb-2 text-yellow-300" data-target="100">0</div>
+                    <div class="text-xl">Happy Clients</div>
+                </div>
+                
+                <div class="p-4">
+                    <div class="counter text-4xl md:text-5xl font-bold mb-2 text-yellow-300" data-target="0">0</div>
+                    <div class="text-xl">Awards Won</div>
+                </div>
+                
+                <div class="p-4">
+                    <div class="counter text-4xl md:text-5xl font-bold mb-2 text-yellow-300" data-target="4">0</div>
+                    <div class="text-xl">Years Experience</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Portfolio Section -->
+    <section class="py-20 bg-gray-50" id="portfolio">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">My <span class="gradient-text">Portfolio</span></h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-purple-500 to-indigo-500 mx-auto"></div>
+            </div>
+            
+            <div class="flex justify-center mb-12">
+                <div class="inline-flex rounded-md shadow-sm">
+                    <button type="button" class="filter-btn px-4 py-2 text-sm font-medium rounded-l-lg border border-gray-300 bg-white text-gray-700 hover:bg-gray-50 focus:z-10 focus:ring-2 focus:ring-purple-500 focus:text-purple-700" data-filter="all">
+                        All
+                    </button>
+                    <button type="button" class="filter-btn px-4 py-2 text-sm font-medium border-t border-b border-gray-300 bg-white text-gray-700 hover:bg-gray-50 focus:z-10 focus:ring-2 focus:ring-purple-500 focus:text-purple-700" data-filter="branding">
+                        poster
+                    </button>
+                    <button type="button" class="filter-btn px-4 py-2 text-sm font-medium border border-gray-300 bg-white text-gray-700 hover:bg-gray-50 focus:z-10 focus:ring-2 focus:ring-purple-500 focus:text-purple-700" data-filter="web">
+                        Web Design
+                    </button>
+                    <button type="button" class="filter-btn px-4 py-2 text-sm font-medium rounded-r-lg border border-gray-300 bg-white text-gray-700 hover:bg-gray-50 focus:z-10 focus:ring-2 focus:ring-purple-500 focus:text-purple-700" data-filter="print">
+                        Institute
+                    </button>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 portfolio-container">
+                <!-- Portfolio Item 1 -->
+                <div class="portfolio-item work-card branding" data-category="branding">
+              <div class="relative aspect-square w-full rounded-lg overflow-hidden">
+                   <img src="major acadomy.jpg" 
+                 alt="Brand Identity Project" 
+                 class="absolute inset-0 w-full h-full object-cover">
+                 </div>
+                 <div class="work-overlay">
+                    <h3 class="text-white text-xl font-bold mb-2">Major Defence Academy Barmer</h3>
+                    <p class="text-white mb-4">New Foundaion Batch Starts</p>
+                    <a href="#" class="px-4 py-2 bg-white text-purple-600 rounded-full font-medium">View Project</a>
+                 </div>
+             </div>
+
+             <!-- Portfolio Item 2 -->
+                 <div class="portfolio-item work-card branding" data-category="Social">
+                     <div class="relative aspect-square w-full rounded-lg overflow-hidden">
+                        <img src="social media poster.jpg" 
+                              alt="Brand Identity Project" 
+                             class="absolute inset-0 w-full h-full object-cover">
+                     </div>
+                 <div class="work-overlay">
+                      <h3 class="text-white text-xl font-bold mb-2">Happy Holi</h3>
+                      <p class="text-white mb-4">Social Media Poster Design</p>
+                     <a href="https://www.instagram.com/veerteja_graphics/p/DHIkJ4rz7d_/" class="px-4 py-2 bg-white text-purple-600 rounded-full font-medium">View Project</a>
+                    </div>
+                 </div>
+
+                
+                <!-- Portfolio Item 3 -->
+                 <div class="portfolio-item work-card branding" data-category="Institute">
+                     <div class="relative aspect-square w-full rounded-lg overflow-hidden">
+                        <img src="success classes.jpg" 
+                              alt="Brand Identity Project" 
+                             class="absolute inset-0 w-full h-full object-cover">
+                     </div>
+                 <div class="work-overlay">
+                      <h3 class="text-white text-xl font-bold mb-2">Success Classes</h3>
+                      <p class="text-white mb-4">Poster Designing for Success coaching Classes</p>
+                     <a href="#" class="px-4 py-2 bg-white text-purple-600 rounded-full font-medium">View Project</a>
+                    </div>
+                 </div>
+                
+                <!-- Portfolio Item 4 -->
+                 <div class="portfolio-item work-card branding" data-category="Institute">
+                     <div class="relative aspect-square w-full rounded-lg overflow-hidden">
+                        <img src="rk education.jpg" 
+                              alt="Brand Identity Project" 
+                             class="absolute inset-0 w-full h-full object-cover">
+                     </div>
+                 <div class="work-overlay">
+                      <h3 class="text-white text-xl font-bold mb-2">RK Education </h3>
+                      <p class="text-white mb-4">School Result Poster designing</p>
+                     <a href="#" class="px-4 py-2 bg-white text-purple-600 rounded-full font-medium">View Project</a>
+                    </div>
+                 </div>
+                
+                <!-- Portfolio Item 5 -->
+                 <div class="portfolio-item work-card branding" data-category="Institute">
+                     <div class="relative aspect-square w-full rounded-lg overflow-hidden">
+                        <img src="mega test.jpg" 
+                              alt="Brand Identity Project" 
+                             class="absolute inset-0 w-full h-full object-cover">
+                     </div>
+                 <div class="work-overlay">
+                      <h3 class="text-white text-xl font-bold mb-2">Mega Test </h3>
+                      <p class="text-white mb-4">Coaching test Poster designing</p>
+                     <a href="#" class="px-4 py-2 bg-white text-purple-600 rounded-full font-medium">View Project</a>
+                    </div>
+                 </div>
+                
+                <!-- Portfolio Item 6 -->
+                 <div class="portfolio-item work-card branding" data-category="Social">
+                     <div class="relative aspect-square w-full rounded-lg overflow-hidden">
+                        <img src="social media poster.jpg" 
+                              alt="Brand Identity Project" 
+                             class="absolute inset-0 w-full h-full object-cover">
+                     </div>
+                 <div class="work-overlay">
+                      <h3 class="text-white text-xl font-bold mb-2">Social Media  </h3>
+                      <p class="text-white mb-4">Social Media Poster designing</p>
+                     <a href="#" class="px-4 py-2 bg-white text-purple-600 rounded-full font-medium">View Project</a>
+                    </div>
+                 
+               </div>
+             <!-- Portfolio Item 7 -->
+        <div class="portfolio-item work-card branding" data-category="Social">
+                <div class="relative aspect-[16/9] w-full rounded-lg overflow-hidden align-items">
+            <img src="youtube thambnail.jpg" 
+             alt="Brand Identity Project" 
+             class="absolute inset-0 w-full h-full object-cover">
+         </div>
+             <div class="work-overlay">
+        <h3 class="text-white text-xl font-bold mb-2">youtube thambnail</h3>
+        <p class="text-white mb-4">Youtube thambnail designing</p>
+        <a href="#" class="px-4 py-2 bg-white text-purple-600 rounded-full font-medium">View Project</a>
+             </div>
+        </div>
+                 
+               </div>
+            <div class="text-center mt-12">
+                <a href="#" class="btn-primary px-6 py-3 rounded-full font-semibold inline-flex items-center">
+                    View All Projects <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Testimonials Section -->
+    <section class="py-20 bg-white" id="testimonials">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Client <span class="gradient-text">Testimonials</span></h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-purple-500 to-indigo-500 mx-auto"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="testimonial-card bg-gray-50 p-8 rounded-lg">
+                    <div class="flex items-center mb-4">
+                        <img src="https://cdn3.iconfinder.com/data/icons/avatars-flat/33/man_5-1024.png" 
+                             alt="Sarah Johnson" 
+                             class="w-12 h-12 rounded-full object-cover mr-4">
+                        <div>
+                            <h4 class="font-bold text-gray-800">Kumbharam Choudhary</h4>
+                            <p class="text-purple-600">Director, Govindam Coaching Bhimda</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">"Naresh choudhary our brand identity completely. Her designs captured our vision perfectly and helped us stand out in a crowded market."</p>
+                    <div class="flex text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card bg-gray-50 p-8 rounded-lg">
+                    <div class="flex items-center mb-4">
+                        <img src="https://cdn3.iconfinder.com/data/icons/avatars-flat/33/man_5-1024.png" 
+                             alt="Michael Chen" 
+                             class="w-12 h-12 rounded-full object-cover mr-4">
+                        <div>
+                            <h4 class="font-bold text-gray-800">Moolaram sau</h4>
+                            <p class="text-purple-600">Director , CCI Balotra</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">"The poster design Naresh Choudhary created for our institute was exceptional. Students increased by 30% after the redesign. Highly recommended!"</p>
+                    <div class="flex text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card bg-gray-50 p-8 rounded-lg">
+                    <div class="flex items-center mb-4">
+                        <img src="https://cdn3.iconfinder.com/data/icons/avatars-flat/33/man_5-1024.png" 
+                             alt="Jessica Williams" 
+                             class="w-12 h-12 rounded-full object-cover mr-4">
+                        <div>
+                            <h4 class="font-bold text-gray-800">Khumaram Godara</h4>
+                            <p class="text-purple-600">Director, Success Classes</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">"The poster design Naresh Choudhary created for our institute was exceptional. Students increased by 30% after the redesign. Highly recommended!"</p>
+                    <div class="flex text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section class="py-20 bg-gray-50" id="contact">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Get In <span class="gradient-text">Touch</span></h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-purple-500 to-indigo-500 mx-auto"></div>
+            </div>
+            
+            <div class="flex flex-col md:flex-row">
+                <div class="md:w-1/2 mb-10 md:mb-0 md:pr-8">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Let's Talk About Your Project</h3>
+                    <p class="text-gray-600 mb-8">Have a project in mind or want to discuss potential collaboration? Feel free to reach out. I'm always excited to hear about new creative opportunities.</p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="bg-purple-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-map-marker-alt text-purple-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800 mb-1">Location</h4>
+                                <p class="text-gray-600">Sedwa , Barmer</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-purple-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-envelope text-purple-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800 mb-1">Email</h4>
+                                <p class="text-gray-600">nareshchoudharydeepla@gmail.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-purple-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-phone-alt text-purple-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800 mb-1">Phone</h4>
+                                <p class="text-gray-600">+91 6378842182</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8 flex space-x-4">
+                        <a href="https://wa.me/6378842182" class="bg-gray-800 text-white p-3 rounded-full w-10 h-10 flex items-center justify-center hover:bg-purple-600 transition-colors">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="https://github.com/nareshchoudhree" class="bg-gray-800 text-white p-3 rounded-full w-10 h-10 flex items-center justify-center hover:bg-purple-600 transition-colors">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://instagram.com/naresh.choudhree" class="bg-gray-800 text-white p-3 rounded-full w-10 h-10 flex items-center justify-center hover:bg-purple-600 transition-colors">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://www.facebook.com/nareshkumar.deepla" class="bg-gray-800 text-white p-3 rounded-full w-10 h-10 flex items-center justify-center hover:bg-purple-600 transition-colors">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="https://x.com/nareshchoudhree" class="bg-gray-800 text-white p-3 rounded-full w-10 h-10 flex items-center justify-center hover:bg-purple-600 transition-colors">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </div>
+                </div>
+                
+               <div class="md:w-1/2">
+    <form id="contact-form" class="space-y-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+                <label for="name" class="block text-gray-700 font-medium mb-2">Your Name</label>
+                <input type="text" id="name" name="name" class="contact-input w-full px-4 py-3 rounded-lg focus:outline-none" required>
+            </div>
+            <div>
+                <label for="email" class="block text-gray-700 font-medium mb-2">Your Email</label>
+                <input type="email" id="email" name="email" class="contact-input w-full px-4 py-3 rounded-lg focus:outline-none" required>
+            </div>
+        </div>
+        <div>
+            <label for="subject" class="block text-gray-700 font-medium mb-2">Subject</label>
+            <input type="text" id="subject" name="subject" class="contact-input w-full px-4 py-3 rounded-lg focus:outline-none" required>
+        </div>
+        <div>
+            <label for="message" class="block text-gray-700 font-medium mb-2">Message</label>
+            <textarea id="message" name="message" rows="5" class="contact-input w-full px-4 py-3 rounded-lg focus:outline-none" required></textarea>
+        </div>
+        <button type="submit" class="btn-primary w-full px-6 py-3 rounded-full font-semibold">
+            Send Message <i class="fas fa-paper-plane ml-2"></i>
+        </button>
+    </form>
+</div>
+
+<!-- EmailJS SDK -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script type="text/javascript">
+    (function() {
+        // Initialize EmailJS with your Public Key
+        emailjs.init("ZmDeZCBPYPjKPeePA"); // Your EmailJS Public Key
+    })();
+
+    window.onload = function() {
+        document.getElementById('contact-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            // Send form data via EmailJS
+            emailjs.sendForm('service_un1i93q', 'template_pxxpp0p', this)
+                .then(() => {
+                    alert('Message sent successfully!');
+                    this.reset(); // Clear form after successful submission
+                }, (error) => {
+                    alert('Failed to send message: ' + JSON.stringify(error));
+                });
+        });
+    };
+</script>
+            </div>
+        </div>
+        
+    </section>
+    
+    <!-- Footer -->
+    <footer class="py-12 bg-gray-900 text-white">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <a href="#" class="text-2xl font-bold">Naresh<span class="gradient-text">Choudhary</span></a>
+                    <p class="text-gray-400 mt-2">Bringing creative visions to life.</p>
+                </div>
+                
+                <div class="flex flex-col items-center md:items-end">
+                    <p class="text-gray-400 mb-4">© 2025 Naresh Choudhary. All rights reserved.</p>
+                    <div class="flex space-x-6">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">Privacy Policy</a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">Terms of Service</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Navbar Scroll Effect
+        const navbar = document.getElementById('navbar');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                navbar.classList.add('bg-white', 'shadow-md');
+                navbar.classList.remove('bg-transparent');
+            } else {
+                navbar.classList.remove('bg-white', 'shadow-md');
+                navbar.classList.add('bg-transparent');
+            }
+        });
+        
+        // Smooth Scrolling for Anchor Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                
+                // Close mobile menu if open
+                mobileMenu.classList.add('hidden');
+            });
+        });
+        
+        // Portfolio Filtering
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
+        
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterBtns.forEach(btn => btn.classList.remove('bg-purple-600', 'text-white'));
+                
+                // Add active class to clicked button
+                btn.classList.add('bg-purple-600', 'text-white');
+                
+                const filter = btn.getAttribute('data-filter');
+                
+                portfolioItems.forEach(item => {
+                    if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+        
+        // Counter Animation
+        const counters = document.querySelectorAll('.counter');
+        const speed = 200;
+        
+        function animateCounters() {
+            counters.forEach(counter => {
+                const target = +counter.getAttribute('data-target');
+                const count = +counter.innerText;
+                const increment = target / speed;
+                
+                if (count < target) {
+                    counter.innerText = Math.ceil(count + increment);
+                    setTimeout(animateCounters, 1);
+                } else {
+                    counter.innerText = target;
+                }
+            });
+        }
+        
+        // Start counter animation when section is in view
+        const statsSection = document.querySelector('section.bg-gradient-to-r');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounters();
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        observer.observe(statsSection);
+        
+        // Custom Cursor
+        const cursor = document.querySelector('.cursor');
+        const cursorFollower = document.querySelector('.cursor-follower');
+        
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+            
+            setTimeout(() => {
+                cursorFollower.style.left = e.clientX + 'px';
+                cursorFollower.style.top = e.clientY + 'px';
+            }, 100);
+        });
+        
+        // Add hover effect for cursor
+        const hoverElements = document.querySelectorAll('a, button, .work-card, .tilt');
+        
+        hoverElements.forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                cursor.style.transform = 'translate(-50%, -50%) scale(1.5)';
+                cursor.style.backgroundColor = 'rgba(108, 92, 231, 0.8)';
+            });
+            
+            el.addEventListener('mouseleave', () => {
+                cursor.style.transform = 'translate(-50%, -50%) scale(1)';
+                cursor.style.backgroundColor = 'rgba(108, 92, 231, 0.5)';
+            });
+        });
+        
+        // Tilt Effect
+        const tiltElements = document.querySelectorAll('.tilt');
+        
+        tiltElements.forEach(el => {
+            el.addEventListener('mousemove', (e) => {
+                const rect = el.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const angleX = (y - centerY) / 20;
+                const angleY = (centerX - x) / 20;
+                
+                el.style.transform = `perspective(1000px) rotateX(${angleX}deg) rotateY(${angleY}deg) scale(1.03)`;
+            });
+            
+            el.addEventListener('mouseleave', () => {
+                el.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale(1)';
+            });
+        });
+        
+      
+        <!-- EmailJS SDK -->
+
+             (function() {
+             // Initialize EmailJS with your Public Key
+                     emailjs.init("ZmDeZCBPYPjKPeePA"); // Your EmailJS Public Key
+                 })();
+
+             window.onload = function() {
+                document.getElementById('contact-form').addEventListener('submit', function(event) {
+                         event.preventDefault(); // Prevent default form submission
+
+            // Send form data via EmailJS
+                 emailjs.sendForm('service_un1i93q', 'template_pxxpp0p', this)
+                .then(() => {
+                    alert('Message sent successfully!');
+                    this.reset(); // Clear form after successful submission
+                }, (error) => {
+                    alert('Failed to send message: ' + JSON.stringify(error));
+                });
+        });
+    };
+        
+    </script>
+</body>
+</html>
